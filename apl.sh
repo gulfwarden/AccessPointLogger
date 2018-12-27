@@ -77,6 +77,7 @@ fi
 if [ -f $AIRPORT ]; then
    logger "Airport utilty found"
 else
+   # exit, if we didn´t find the right tools
    logger "Airport utility not found, programm will terminate"
    exit 1
 fi
@@ -94,16 +95,23 @@ do
 
 	if (( $lastTxRate > $TXRATE ));
 	then 
+			# not the first run, when we don´t have any historical values
 			if (( TXRATE > 0 ));
 			then 
+				# Let the screen beep and flash
 				echo -e "\a"
 				printf '\e[?5h'
 				sleep 0.5
 				printf '\e[?5l'
 			fi
+    	
+    	# log it
     	logger "SSID: $SSID BSSID: $BSS ($BSSID) channel: $channelhertz GHz lastTxRate: $lastTxRate maxRate: $maxRate (New maximum TX rate)"
+
+    	# and set the TX rate as the new reference
     	TXRATE=$lastTxRate
     else 
+    	# log it
     	logger "SSID: $SSID BSSID: $BSS ($BSSID) channel: $channelhertz GHz lastTxRate: $lastTxRate maxRate: $maxRate (current Maximum: $TXRATE)"
 	fi
 
