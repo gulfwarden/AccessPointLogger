@@ -95,6 +95,8 @@ do
 	if (( $lastTxRate > $TXRATE ));
 	then 
 		echo -e "\a"
+		printf '\e[?5h'
+		printf '\e[?5l'
     	logger "SSID: $SSID BSSID: $BSS ($BSSID) channel: $channelhertz GHz lastTxRate: $lastTxRate maxRate: $maxRate (New maximum TX rate)"
     	TXRATE=$lastTxRate
     else 
