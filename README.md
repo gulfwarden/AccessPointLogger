@@ -19,5 +19,5 @@ The tool can be used on a Apple Mac but is BASH based.
 # Parameters:
 -c CONFIG file, defaults to .config  
 -l LOGFILE, defaults to apl.log  
--n UPDATE, defaults to yes (so the config file gets added new AP BSSIDs  
--t TIME, defaults to 1 and sets the refresh interval  
+-n UPDATE, defaults to yes (so the config file gets added new AP BSSIDs) 
+-t TIME, defaults to 1 and sets the refresh/logging interval  
