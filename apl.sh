@@ -20,14 +20,15 @@ function getCurrentInformation {
 	BSSID=$("$AIRPORT" -I | grep BSSID | cut -d":" -f2- | tr -d [:blank:])
 	SSID=$("$AIRPORT" -I | grep "\bSSID\b" | cut -d":" -f2- | tr -d [:blank:])
 	channel=$("$AIRPORT" -I | grep channel | cut -d":" -f2 | tr -d [:blank:])
+	# Umwandlung in INT
+	channel=${channel%,*}
 
 	# set channel to 2.4 or 5GHz
-
 	if [ $channel -gt 15 ];
-	then 
-    	channelhertz=5
+	then
+    	    channelhertz=5
 	else
-    	channelhertz=2.4
+    	    channelhertz=2.4
 	fi;
 }
 
